@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <title>march</title>
+</head>
+
+<body>
+    <nav class="nav-container"> <a href="http://"> <img style="width: 35px; height: 35px;"
+          src="./Logo-black-Png2.svg" alt=""></a>
+      <div class="menu-icon" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="menu-container" id="menu-container">
+        <li class="menu-close">&#10005;</li>
+        <li class="menu-item">
+          <a class="menu-link" href="https://blog.trymarch.dev"> blog </a>
+        </li>
+        <li class="menu-item test">
+          <a class="menu-link" style="cursor:default;" href="#">See a demo <span class="arrow">></span> </a>
+          <span class="popup">
+            <div style="margin-top: 12px; width: 100%; margin-left: 6px;">
+              please enter email in join waitlist, the welcome email comes with a loom
+              video.
+
+              No spamming:)
+            </div>
+          </span>
+        </li>
+      </ul>
+    </nav>
+    <section class="main-section">
+      <main>
+        <section class="hero">
+          <!-- <h3>A better alternative to <br>
+            the one you're currently using.</h3> -->
+            <h4>
+              A lightweight & blazing fast product development tool <span style="color:  rgb(99, 97, 90);;">for high performing
+                teams to plan, collaborate and build remarkable products.</span>
+            </h4>
+          <!-- <h4>
+            A productive method of building products, <span style="color:  rgb(99, 97, 90);;"> that brings the entire
+              development team together in one place.</span>
+          </h4> -->
+          <div class="join-list">
+            <form class="newsletter-form form-width"
+              action="https://app.loops.so/api/newsletter-form/clky11weo00q9l80oo39mxfp4" method="POST">
+              <input class="newsletter-form-input" name="newsletter-form-input" type="email"
+                placeholder="Enter your work email" required style="
+                    flex-grow: 2;
+                    border: none;
+                    background: inherit;
+                    margin: 0;
+                    max-width: 65%;
+                    text-align: center;" />
+              <button type="submit" class="newsletter-form-button">Join waitlist ></button>
+              <button type="button" class="newsletter-loading-button">Please wait...</button>
+            </form>
+            <div class="newsletter-success" style="display: none;">You've triggered a loop, Talk soon.</div>
+            <div class="newsletter-error" style="display: none;">
+              <span class="newsletter-error-message">Oops! Something went wrong, please try again</span>
+              <button type="button" class="newsletter-back-button">Back</button>
+            </div>
+          </div>
+
+          <!-- Your JavaScript code -->
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const form = document.querySelector(".newsletter-form");
+              const formInput = document.querySelector(".newsletter-form-input");
+              const success = document.querySelector(".newsletter-success");
+              const errorContainer = document.querySelector(".newsletter-error");
+              const errorMessage = document.querySelector(".newsletter-error-message");
+              const backButton = document.querySelector(".newsletter-back-button");
+              const submitButton = document.querySelector(".newsletter-form-button");
+              const loadingButton = document.querySelector(".newsletter-loading-button");
+
+              // Initialize event listeners
+              form.addEventListener("submit", submitHandler);
+              backButton.addEventListener("click", resetFormHandler);
+
+              function submitHandler(event) {
+                event.preventDefault();
+
+                submitButton.style.display = "none";
+                loadingButton.style.display = "block";
+
+                var formBody = "userGroup=Waitlist&email=" + encodeURIComponent(formInput.value);
+                fetch(event.target.action, {
+                  method: "POST",
+                  body: formBody,
+                  headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                })
+                  .then((res) => {
+                    if (res.ok) {
+                      form.style.display = "none";
+                      success.style.display = "block";
+                      form.reset();
+                    } else {
+                      return res.json().then(data => {
+                        errorContainer.style.display = "block";
+                        form.style.display = "none";
+                        errorMessage.innerText = data.message
+                          ? data.message
+                          : res.statusText;
+                      });
+                    }
+                  })
+                  .catch(error => {
+                    // If error caught
+                    // display error message if available
+                    form.style.display = "none";
+                    errorContainer.style.display = "block";
+                    errorMessage.innerText = "Oops! Something went wrong, please try again";
+                  })
+                  .finally(() => {
+                    form.style.display = "none";
+                    formInput.style.display = "none";
+                    loadingButton.style.display = "none";
+                    backButton.style.display = "block";
+                  });
+              }
+
+              function resetFormHandler(event) {
+                success.style.display = "none";
+                errorContainer.style.display = "none";
+                formInput.style.display = "block";
+                submitButton.style.display = "block";
+              }
+            });
+          </script>
+        </section>
+        <section class="links">
+          <p> — <a href="https://blog.trymarch.dev">Read</a> our memes & journals.</p>
+          <p> — <a href="https://twitter.com/march_dev">follow us</a> on X. </p>
+        </section>
+      </main>
+      <hr class="new1">
+    </section>
+    <div class="push"></div>
+    <footer>
+      <div class="foo-sec">
+        <div class="footer-links">
+          <div class="footer-bold"> <a href="">march. </a></div>
+          <div class="foo-links">
+            <a href="https://twitter.com/march_dev"> <i class="fa-brands fa-x-twitter fa-lg"></i></a>
+            <a href="https://www.linkedin.com/company/marchdev/"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+          </div>
+        </div>
+        <p>© 2023 March labs [.]</p>
+        <p style="margin-left: 2px;" >eu-west-1, Ireland</p>
+      </div>
+    </footer>
+  <script src="script.js"></script>
+</body>
+</html>
