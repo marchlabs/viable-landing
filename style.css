@@ -368,6 +368,9 @@ footer{
   .links{
     margin-bottom: 12rem;
   }
+  .nav-container img{
+    margin-left: 1rem;
+  }
 
   .menu-container {
   position: fixed;
